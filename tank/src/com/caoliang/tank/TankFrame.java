@@ -1,6 +1,8 @@
 package com.caoliang.tank;
 
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -21,6 +23,18 @@ public class TankFrame extends Frame{
                 System.exit(0);
             }
 
+        });
+
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                System.out.println("key pressed");
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                System.out.println("key released");
+            }
         });
     }
 
