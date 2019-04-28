@@ -10,10 +10,13 @@ public class Tank {
 
     private boolean moving = false;
 
-    public Tank(int x, int y, Dir dir) {
+    private TankFrame tf = null;
+
+    public Tank(int x, int y, Dir dir, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.tf = tf;
     }
 
     public void paint(Graphics g) {
@@ -46,6 +49,10 @@ public class Tank {
         }
         //x += 10;
         //y += 10;
+    }
+
+    public void fire() {
+        tf.bullet = new Bullet(x, y, dir);
     }
 
     public Dir getDir() {
