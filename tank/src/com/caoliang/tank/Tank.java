@@ -2,14 +2,15 @@ package com.caoliang.tank;
 
 
 import java.awt.*;
+import java.util.Random;
 
 public class Tank {
 
     int x = 200, y = 200;
     private Dir dir = Dir.DOWN;
-    private static final int SPEED = 10;
+    private static final int SPEED = 3;
 
-    private boolean moving = false;
+    private boolean moving = true;
 
     private TankFrame tf = null;
 
@@ -18,10 +19,15 @@ public class Tank {
 
     public static int HEIGHT = ResourceMgr.tankD.getHeight();
 
-    public Tank(int x, int y, Dir dir, TankFrame tf) {
+    private Random random = new Random();
+
+    private Group group = Group.Bad;
+
+    public Tank(int x, int y, Dir dir, Group group, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.group = group;
         this.tf = tf;
     }
 
@@ -43,10 +49,10 @@ public class Tank {
                 break;
         }
 
-        moving();
+        move();
     }
 
-    private void moving() {
+    private void move() {
 
         // moving = false 就停止
         if(!moving) return;
@@ -67,13 +73,23 @@ public class Tank {
         }
         //x += 10;
         //y += 10;
+
+        if(group == Group.Bad && random.nextInt(10) > 8) this.fire();
     }
 
     public void fire() {
         int bX = this.x + Tank.WIDTH/2 - Bullet.WIDTH/2;
         int bY = this.y + Tank.HEIGHT/2 - Bullet.HEIGHT/2;
 
-        tf.bullets.add(new Bullet(bX, bY, dir, tf));
+        tf.bullets.add(new Bullet(bX, bY, dir, group, tf));
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
     public Dir getDir() {

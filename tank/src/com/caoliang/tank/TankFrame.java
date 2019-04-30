@@ -11,7 +11,7 @@ import java.util.List;
 
 public class TankFrame extends Frame{
 
-    Tank myTank = new Tank(200,200, Dir.DOWN, this);
+    Tank myTank = new Tank(200,400, Dir.DOWN, Group.Good,this);
 
     List<Bullet> bullets = new ArrayList<>();
 

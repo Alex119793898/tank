@@ -18,10 +18,13 @@ public class Bullet {
 
     private TankFrame tf = null;
 
-    public Bullet(int x, int y, Dir dir, TankFrame tf) {
+    private Group group = Group.Bad;
+
+    public Bullet(int x, int y, Dir dir, Group group, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.group = group;
         this.tf = tf;
     }
 
@@ -72,6 +75,9 @@ public class Bullet {
     }
 
     public void knockWith(Tank tank) {
+        if(group == tank.getGroup()) return;
+
+        //TODO: 用rect 来记录子弹的位置
         Rectangle rect1 = new Rectangle(x, y, WIDTH, HEIGHT);
         Rectangle rect2 = new Rectangle(tank.x, tank.y, tank.WIDTH, tank.HEIGHT);
 

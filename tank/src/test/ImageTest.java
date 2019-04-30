@@ -1,6 +1,6 @@
 
 
-
+/*
 import org.junit.Test;
 
 import java.awt.image.BufferedImage;
@@ -20,7 +20,7 @@ public class ImageTest {
 		try {
 			BufferedImage image = ImageIO.read(new File("/Users/caoliang/Desktop/images/bulletD.gif"));
 			assertNotNull(image);
-			
+
 			BufferedImage image2 = ImageIO.read(ImageTest.class.getClassLoader().getResourceAsStream("images/bulletD.gif"));
 			//this.getClass()
 			assertNotNull(image2);
@@ -29,4 +29,4 @@ public class ImageTest {
 		}
 	}
 
-}
+}*/
