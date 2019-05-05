@@ -19,7 +19,7 @@ public class TankFrame extends Frame{
 
     List<Tank> tanks = new ArrayList<>();
 
-    BaoZha baoZha = new BaoZha(100, 100, this);
+    List<BaoZha> baoZhas = new ArrayList<>();
 
     static final int GAME_WIDTH = 1280, GAME_HEIGHT = 960 ;
 
@@ -63,6 +63,7 @@ public class TankFrame extends Frame{
         g.setColor(Color.WHITE);
         g.drawString("子弹的数量：" + bullets.size(), 10, 60);
         g.drawString("敌人的数量：" + tanks.size(), 10, 80);
+        g.drawString("爆炸的数量：" + baoZhas.size(), 10, 100);
         g.setColor(c);
 
         System.out.println("pain all!");
@@ -89,7 +90,9 @@ public class TankFrame extends Frame{
             }
         }
 
-        baoZha.paint(g);
+        for (int i=0; i<baoZhas.size(); i++){
+            baoZhas.get(i).paint(g);
+        }
 
     }
 

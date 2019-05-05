@@ -30,7 +30,7 @@ public class BaoZha {
         g.drawImage(ResourceMgr.baoZha[step++],x,y,null);
 
         if(step >= ResourceMgr.baoZha.length){
-            step = 0;
+            tf.baoZhas.remove(this);
         }
     }
 
