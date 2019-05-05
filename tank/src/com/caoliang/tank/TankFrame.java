@@ -1,5 +1,7 @@
 package com.caoliang.tank;
 
+import com.mashibing.tank.Audio;
+
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -150,6 +152,8 @@ public class TankFrame extends Frame{
             }
 
             setMainTankDir();
+
+            new Thread(()->new Audio("audio/tank_move.wav").play()).start();
         }
 
 

@@ -1,6 +1,8 @@
 package com.caoliang.tank;
 
 
+import com.mashibing.tank.Audio;
+
 import java.awt.*;
 import java.util.Random;
 
@@ -82,6 +84,9 @@ public class Tank {
         int bY = this.y + Tank.HEIGHT/2 - Bullet.HEIGHT/2;
 
         tf.bullets.add(new Bullet(bX, bY, dir, group, tf));
+
+        if(this.group == Group.Good) new Thread(()->new Audio("audio/tank_fire.wav").play()).start();
+
     }
 
     public Group getGroup() {
