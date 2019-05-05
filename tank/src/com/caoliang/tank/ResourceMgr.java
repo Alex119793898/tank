@@ -6,17 +6,25 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class ResourceMgr {
-	public static BufferedImage tankL, tankU, tankR, tankD;
+	public static BufferedImage goodTankL, goodTankU, goodTankR, goodTankD;
+
+	public static BufferedImage badTankL, badTankU, badTankR, badTankD;
+
 	public static BufferedImage bulletL, bulletU, bulletR, bulletD;
 
 	public static BufferedImage[] baoZha = new BufferedImage[16];
 
 	static {
 		try {
-			tankU = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/BadTank1.png"));
-			tankD = ImageUtil.rotateImage(tankU,180);
-			tankL = ImageUtil.rotateImage(tankU,-90);
-			tankR = ImageUtil.rotateImage(tankU,90);
+			goodTankU = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/GoodTank1.png"));
+			goodTankD = ImageUtil.rotateImage(goodTankU,180);
+			goodTankL = ImageUtil.rotateImage(goodTankU,-90);
+			goodTankR = ImageUtil.rotateImage(goodTankU,90);
+
+			badTankU = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/BadTank1.png"));
+			badTankD = ImageUtil.rotateImage(badTankU,180);
+			badTankL = ImageUtil.rotateImage(badTankU,-90);
+			badTankR = ImageUtil.rotateImage(badTankU,90);
 
 			bulletU = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/bulletU.png"));
 			bulletD = ImageUtil.rotateImage(bulletU,180);
