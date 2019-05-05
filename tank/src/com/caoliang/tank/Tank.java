@@ -76,7 +76,15 @@ public class Tank {
         //x += 10;
         //y += 10;
 
-        if(group == Group.Bad && random.nextInt(10) > 8) this.fire();
+        if(group == Group.Bad && random.nextInt(100) > 98)
+            this.fire();
+
+        if(group == Group.Bad && random.nextInt(100) > 98)
+            randowDir();
+    }
+
+    private void randowDir() {
+        this.dir = Dir.values()[random.nextInt(4)];
     }
 
     public void fire() {

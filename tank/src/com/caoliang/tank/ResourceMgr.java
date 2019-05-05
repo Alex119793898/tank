@@ -13,15 +13,15 @@ public class ResourceMgr {
 
 	static {
 		try {
-			tankL = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/tankL.gif"));
-			tankU = ImageUtil.rotateImage(tankL,90);
-			tankR = ImageUtil.rotateImage(tankL,180);
-			tankD = ImageUtil.rotateImage(tankL,-90);
+			tankU = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/BadTank1.png"));
+			tankD = ImageUtil.rotateImage(tankU,180);
+			tankL = ImageUtil.rotateImage(tankU,-90);
+			tankR = ImageUtil.rotateImage(tankU,90);
 
-			bulletL = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/bulletL.gif"));
-			bulletR = ImageUtil.rotateImage(bulletL,180);
-			bulletU = ImageUtil.rotateImage(bulletL,90);
-			bulletD = ImageUtil.rotateImage(bulletL,-90);
+			bulletU = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/bulletU.png"));
+			bulletD = ImageUtil.rotateImage(bulletU,180);
+			bulletL = ImageUtil.rotateImage(bulletU,-90);
+			bulletR = ImageUtil.rotateImage(bulletU,90);
 
 			for(int i =0; i<16; i++){
 				baoZha[i] = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/e" + (i + 1) + ".gif"));
