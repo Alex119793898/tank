@@ -4,9 +4,9 @@ import java.awt.*;
 
 public class Bullet {
 
-    private int width = 20;
+    static int WIDTH = ResourceMgr.bulletD.getWidth();
 
-    private int height = 20;
+    static int HEIGHT = ResourceMgr.bulletD.getHeight();
 
     private static final int SPEED = 10;
 

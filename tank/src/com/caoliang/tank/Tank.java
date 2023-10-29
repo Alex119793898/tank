@@ -1,6 +1,5 @@
 package com.caoliang.tank;
 
-import com.mashibing.tank.ResourceMgr;
 
 import java.awt.*;
 
@@ -13,6 +12,10 @@ public class Tank {
     private boolean moving = false;
 
     private TankFrame tf = null;
+
+    private static int WIDTH = ResourceMgr.tankD.getWidth();
+
+    private static int HEIGHT = ResourceMgr.tankD.getHeight();
 
     public Tank(int x, int y, Dir dir, TankFrame tf) {
         this.x = x;
@@ -64,7 +67,10 @@ public class Tank {
     }
 
     public void fire() {
-        tf.bullets.add(new Bullet(x, y, dir, tf));
+        int bX = this.x + Tank.WIDTH/2 - Bullet.WIDTH/2;
+        int bY = this.y + Tank.HEIGHT/2 - Bullet.HEIGHT/2;
+
+        tf.bullets.add(new Bullet(bX, bY, dir, tf));
     }
 
     public Dir getDir() {
