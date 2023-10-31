@@ -70,4 +70,18 @@ public class Bullet {
         }
 
     }
+
+    public void knockWith(Tank tank) {
+        Rectangle rect1 = new Rectangle(x, y, WIDTH, HEIGHT);
+        Rectangle rect2 = new Rectangle(tank.x, tank.y, tank.WIDTH, tank.HEIGHT);
+
+        if(rect1.intersects(rect2)){
+            this.die();
+            tank.die();
+        }
+    }
+
+    private void die() {
+        live = false;
+    }
 }
