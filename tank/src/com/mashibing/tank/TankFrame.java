@@ -14,10 +14,11 @@ import java.util.List;
 
 public class TankFrame extends Frame {
 
-	Tank myTank = new Tank(200, 200, Dir.DOWN, this);
+	Tank myTank = new Tank(200, 400, Dir.DOWN, this);
 	List<Bullet> bullets = new ArrayList<>();
+	List<Tank> tanks = new ArrayList<>();
+	
 	static final int GAME_WIDTH = 800, GAME_HEIGHT = 600;
-
 
 	public TankFrame() {
 		setSize(GAME_WIDTH, GAME_HEIGHT);
@@ -38,9 +39,10 @@ public class TankFrame extends Frame {
 	}
 
 	Image offScreenImage = null;
+
 	@Override
 	public void update(Graphics g) {
-		if(offScreenImage == null) {
+		if (offScreenImage == null) {
 			offScreenImage = this.createImage(GAME_WIDTH, GAME_HEIGHT);
 		}
 		Graphics gOffScreen = offScreenImage.getGraphics();
@@ -60,10 +62,15 @@ public class TankFrame extends Frame {
 		g.setColor(c);
 
 		myTank.paint(g);
-		for(int i=0; i<bullets.size(); i++) {
+		for (int i = 0; i < bullets.size(); i++) {
 			bullets.get(i).paint(g);
 		}
+		
+		for (int i = 0; i < tanks.size(); i++) {
+			tanks.get(i).paint(g);
+		}
 
+		
 		// for(Iterator<Bullet> it = bullets.iterator(); it.hasNext();) {
 		// Bullet b = it.next();
 		// if(!b.live) it.remove();
@@ -136,20 +143,20 @@ public class TankFrame extends Frame {
 
 		private void setMainTankDir() {
 
-			if(!bL && !bU && !bR && !bD) myTank.setMoving(false);
+			if (!bL && !bU && !bR && !bD)
+				myTank.setMoving(false);
 			else {
 				myTank.setMoving(true);
 
-				if(bL) myTank.setDir(Dir.LEFT);
-				if(bU) myTank.setDir(Dir.UP);
-				if(bR) myTank.setDir(Dir.RIGHT);
-				if(bD) myTank.setDir(Dir.DOWN);
+				if (bL)
+					myTank.setDir(Dir.LEFT);
+				if (bU)
+					myTank.setDir(Dir.UP);
+				if (bR)
+					myTank.setDir(Dir.RIGHT);
+				if (bD)
+					myTank.setDir(Dir.DOWN);
 			}
-
-
 		}
-
 	}
-
-
 }
