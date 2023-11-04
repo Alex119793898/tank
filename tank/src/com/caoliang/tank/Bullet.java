@@ -8,7 +8,7 @@ public class Bullet {
 
     static int HEIGHT = ResourceMgr.bulletD.getHeight();
 
-    private static final int SPEED = 10;
+    private static final int SPEED = 15;
 
     private int x, y;
 
