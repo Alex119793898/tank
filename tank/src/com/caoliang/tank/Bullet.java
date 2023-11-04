@@ -20,12 +20,19 @@ public class Bullet {
 
     private Group group = Group.Bad;
 
+    Rectangle rect = new Rectangle();
+
     public Bullet(int x, int y, Dir dir, Group group, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.group = group;
         this.tf = tf;
+
+        rect.x = x;
+        rect.y = y;
+        rect.width = WIDTH;
+        rect.height = HEIGHT;
     }
 
     public void paint(Graphics g){
@@ -72,16 +79,19 @@ public class Bullet {
             live = false;
         }
 
+        rect.x = x;
+        rect.y = y;
+
     }
 
     public void knockWith(Tank tank) {
         if(group == tank.getGroup()) return;
 
-        //TODO: 用rect 来记录子弹的位置
-        Rectangle rect1 = new Rectangle(x, y, WIDTH, HEIGHT);
-        Rectangle rect2 = new Rectangle(tank.x, tank.y, tank.WIDTH, tank.HEIGHT);
+        //用rect 来记录子弹的位置
+        //Rectangle rect1 = new Rectangle(x, y, WIDTH, HEIGHT);
+        //Rectangle rect2 = new Rectangle(tank.x, tank.y, tank.WIDTH, tank.HEIGHT);
 
-        if(rect1.intersects(rect2)){
+        if(rect.intersects(tank.rect)){
             this.die();
             tank.die();
 

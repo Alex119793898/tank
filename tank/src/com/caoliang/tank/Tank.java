@@ -25,12 +25,19 @@ public class Tank {
 
     private Group group = Group.Bad;
 
+    Rectangle rect = new Rectangle();
+
     public Tank(int x, int y, Dir dir, Group group, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.group = group;
         this.tf = tf;
+
+        rect.x = x;
+        rect.y = y;
+        rect.width = WIDTH;
+        rect.height = HEIGHT;
     }
 
     public void paint(Graphics g) {
@@ -83,11 +90,15 @@ public class Tank {
             randowDir();
 
         boundsCheck();
+
+        rect.x = x;
+        rect.y = y;
     }
 
     private void boundsCheck() {
         if( x < 2 ) x =  2;
-        if( y < 2 ) y =  2;
+        //菜单栏 有30的高度
+        if( y < 28 ) y =  28;
         if( x > TankFrame.GAME_WIDTH - Tank.WIDTH - 2 ) x = TankFrame.GAME_WIDTH - Tank.WIDTH - 2;
         if( y > TankFrame.GAME_HEIGHT - Tank.HEIGHT - 2 ) y = TankFrame.GAME_HEIGHT - Tank.HEIGHT - 2;
     }
