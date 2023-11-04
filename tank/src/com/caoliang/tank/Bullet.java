@@ -84,7 +84,10 @@ public class Bullet {
         if(rect1.intersects(rect2)){
             this.die();
             tank.die();
-            tf.baoZhas.add(new BaoZha(x, y, tf));
+
+            int eX = tank.getX() + Tank.WIDTH / 2 - BaoZha.WIDTH /2;
+            int eY = tank.getY() + Tank.HEIGHT / 2 - BaoZha.HEIGHT / 2;
+            tf.baoZhas.add(new BaoZha(eX, eY, tf));
         }
     }
 
