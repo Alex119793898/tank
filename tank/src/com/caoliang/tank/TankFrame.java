@@ -17,7 +17,9 @@ public class TankFrame extends Frame{
 
     List<Tank> tanks = new ArrayList<>();
 
-    static final int GAME_WIDTH = 800, GAME_HEIGHT = 600;
+    BaoZha baoZha = new BaoZha(100, 100, this);
+
+    static final int GAME_WIDTH = 1280, GAME_HEIGHT = 960 ;
 
     public TankFrame() {
         setSize(GAME_WIDTH, GAME_HEIGHT);
@@ -85,6 +87,7 @@ public class TankFrame extends Frame{
             }
         }
 
+        baoZha.paint(g);
 
     }
 
