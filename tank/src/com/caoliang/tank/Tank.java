@@ -81,6 +81,15 @@ public class Tank {
 
         if(group == Group.Bad && random.nextInt(100) > 98)
             randowDir();
+
+        boundsCheck();
+    }
+
+    private void boundsCheck() {
+        if( x < 2 ) x =  2;
+        if( y < 2 ) y =  2;
+        if( x > TankFrame.GAME_WIDTH - Tank.WIDTH - 2 ) x = TankFrame.GAME_WIDTH - Tank.WIDTH - 2;
+        if( y > TankFrame.GAME_HEIGHT - Tank.HEIGHT - 2 ) y = TankFrame.GAME_HEIGHT - Tank.HEIGHT - 2;
     }
 
     private void randowDir() {
