@@ -4,3 +4,8 @@ tankSpeed=5
 bulletSpeed=10
 gameWidth=1080
 gameHeight=720
+#fireStrategy
+clGoodFS=com.caoliang.tank.FourDirFireStrategy
+clBadFS=com.caoliang.tank.DefaultFireStrategy
+goodFS=com.mashibing.tank.FourDirFireStrategy
+badFS=com.mashibing.tank.DefaultFireStrategy

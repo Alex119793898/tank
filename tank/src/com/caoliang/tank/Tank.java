@@ -4,6 +4,7 @@ package com.caoliang.tank;
 import com.mashibing.tank.Audio;
 
 import java.awt.*;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
 
 public class Tank {
@@ -41,8 +42,19 @@ public class Tank {
         rect.width = WIDTH;
         rect.height = HEIGHT;
 
-        if(group == Group.Good) fs = new FourDirFireStrategy();
-        else fs = new DefaultFireStrategy();
+        if(group == Group.Good) {
+            String goodFS = (String) PropertyMgr.get("clGoodFS");
+
+            try {
+                fs = (FireStrategy) Class.forName(goodFS).getDeclaredConstructor().newInstance();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+        else{
+            fs = new DefaultFireStrategy();
+        }
     }
 
     public void paint(Graphics g) {
