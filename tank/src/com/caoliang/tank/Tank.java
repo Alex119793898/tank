@@ -9,12 +9,12 @@ import java.util.Random;
 public class Tank {
 
     int x = 200, y = 200;
-    private Dir dir = Dir.DOWN;
+    Dir dir = Dir.DOWN;
     private static final int SPEED = 3;
 
     private boolean moving = true;
 
-    private TankFrame tf = null;
+    TankFrame tf = null;
 
     private boolean living = true;
     public static int WIDTH = ResourceMgr.goodTankU.getWidth();
@@ -23,9 +23,11 @@ public class Tank {
 
     private Random random = new Random();
 
-    private Group group = Group.Bad;
+    Group group = Group.Bad;
 
     Rectangle rect = new Rectangle();
+
+    FireStrategy fs ;
 
     public Tank(int x, int y, Dir dir, Group group, TankFrame tf) {
         this.x = x;
@@ -38,6 +40,9 @@ public class Tank {
         rect.y = y;
         rect.width = WIDTH;
         rect.height = HEIGHT;
+
+        if(group == Group.Good) fs = new FourDirFireStrategy();
+        else fs = new DefaultFireStrategy();
     }
 
     public void paint(Graphics g) {
@@ -108,13 +113,7 @@ public class Tank {
     }
 
     public void fire() {
-        int bX = this.x + Tank.WIDTH/2 - Bullet.WIDTH/2;
-        int bY = this.y + Tank.HEIGHT/2 - Bullet.HEIGHT/2;
-
-        tf.bullets.add(new Bullet(bX, bY, dir, group, tf));
-
-        if(this.group == Group.Good) new Thread(()->new Audio("audio/tank_fire.wav").play()).start();
-
+        fs.fire(this);
     }
 
     public int getX() {
