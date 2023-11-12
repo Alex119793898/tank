@@ -1,0 +1,21 @@
+package com.caoliang.abstractfactory;
+
+import com.caoliang.tank.*;
+
+public class DefaultFactory extends GameFactory{
+
+    @Override
+    public BaseTank createTank(int x, int y, Dir dir, Group group, TankFrame tf) {
+        return new Tank(x, y, dir, group, tf);
+    }
+
+    @Override
+    public BaseBaoZha createBaozha(int x, int y, TankFrame tf) {
+        return new BaoZha(x, y, tf);
+    }
+
+    @Override
+    public BaseBullet createBullet(int x, int y, Dir dir, Group group, TankFrame tf) {
+        return new Bullet(x, y, dir, group, tf);
+    }
+}

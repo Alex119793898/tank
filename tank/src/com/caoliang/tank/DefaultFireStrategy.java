@@ -1,5 +1,6 @@
 package com.caoliang.tank;
 
+import com.caoliang.abstractfactory.BaseTank;
 import com.mashibing.tank.Audio;
 
 public class DefaultFireStrategy implements FireStrategy{
@@ -10,7 +11,8 @@ public class DefaultFireStrategy implements FireStrategy{
 
         new Bullet(bX, bY, t.dir, t.group, t.tf);
 
-        if(t.group == Group.Good) new Thread(()->new Audio("audio/tank_fire.wav").play()).start();
+
+        //if(t.group == Group.Good) new Thread(()->new Audio("audio/tank_fire.wav").play()).start();
 
     }
 }

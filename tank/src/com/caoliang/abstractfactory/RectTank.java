@@ -1,16 +1,14 @@
-package com.caoliang.tank;
+package com.caoliang.abstractfactory;
 
 
-import com.caoliang.abstractfactory.BaseTank;
-import com.mashibing.tank.Audio;
+import com.caoliang.tank.*;
 
 import java.awt.*;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
 
-public class Tank extends BaseTank {
+public class RectTank extends BaseTank {
 
-      int x = 200, y = 200;
+    int x = 200, y = 200;
     Dir dir = Dir.DOWN;
     private static final int SPEED = 3;
 
@@ -25,10 +23,9 @@ public class Tank extends BaseTank {
 
     private Random random = new Random();
 
-
     FireStrategy fs ;
 
-    public Tank(int x, int y, Dir dir, Group group, TankFrame tf) {
+    public RectTank(int x, int y, Dir dir, Group group, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
@@ -58,20 +55,10 @@ public class Tank extends BaseTank {
     public void paint(Graphics g) {
         if(!living) tf.tanks.remove(this);
 
-        switch(dir) {
-            case LEFT:
-                g.drawImage(this.group == Group.Good ? ResourceMgr.goodTankL : ResourceMgr.badTankL, x, y, null);
-                break;
-            case UP:
-                g.drawImage(this.group == Group.Good ? ResourceMgr.goodTankU : ResourceMgr.badTankU, x, y, null);
-                break;
-            case RIGHT:
-                g.drawImage(this.group == Group.Good ? ResourceMgr.goodTankR : ResourceMgr.badTankR, x, y, null);
-                break;
-            case DOWN:
-                g.drawImage(this.group == Group.Good ? ResourceMgr.goodTankD : ResourceMgr.badTankD, x, y, null);
-                break;
-        }
+        Color color = g.getColor();
+        g.setColor(group == Group.Good ? Color.RED : Color.BLUE);
+        g.fillRect(x,y,40,40);
+        g.setColor(color);
 
         move();
     }
@@ -114,8 +101,8 @@ public class Tank extends BaseTank {
         if( x < 2 ) x =  2;
         //菜单栏 有30的高度
         if( y < 28 ) y =  28;
-        if( x > TankFrame.GAME_WIDTH - Tank.WIDTH - 2 ) x = TankFrame.GAME_WIDTH - Tank.WIDTH - 2;
-        if( y > TankFrame.GAME_HEIGHT - Tank.HEIGHT - 2 ) y = TankFrame.GAME_HEIGHT - Tank.HEIGHT - 2;
+        if( x > TankFrame.GAME_WIDTH - RectTank.WIDTH - 2 ) x = TankFrame.GAME_WIDTH - RectTank.WIDTH - 2;
+        if( y > TankFrame.GAME_HEIGHT - RectTank.HEIGHT - 2 ) y = TankFrame.GAME_HEIGHT - RectTank.HEIGHT - 2;
     }
 
     private void randowDir() {
@@ -134,7 +121,6 @@ public class Tank extends BaseTank {
         }
 
         //if(group == Group.Good) new Thread(()->new Audio("audio/tank_fire.wav").play()).start();
-
     }
 
     public int getX() {

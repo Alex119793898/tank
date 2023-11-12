@@ -1,16 +1,14 @@
-package com.caoliang.tank;
+package com.caoliang.abstractfactory;
 
-import com.caoliang.abstractfactory.BaseBullet;
-import com.caoliang.abstractfactory.BaseTank;
-import com.sun.xml.internal.rngom.parse.host.Base;
+import com.caoliang.tank.*;
 
 import java.awt.*;
 
-public class Bullet extends BaseBullet {
+public class RectBullet extends BaseBullet {
 
-    public static int WIDTH = ResourceMgr.bulletD.getWidth();
+    static int WIDTH = ResourceMgr.bulletD.getWidth();
 
-    public static int HEIGHT = ResourceMgr.bulletD.getHeight();
+    static int HEIGHT = ResourceMgr.bulletD.getHeight();
 
     private static final int SPEED = 15;
 
@@ -26,7 +24,7 @@ public class Bullet extends BaseBullet {
 
     Rectangle rect = new Rectangle();
 
-    public Bullet(int x, int y, Dir dir, Group group, TankFrame tf) {
+    public RectBullet(int x, int y, Dir dir, Group group, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
@@ -46,20 +44,10 @@ public class Bullet extends BaseBullet {
             tf.bullets.remove(this);
         }
 
-        switch (dir){
-            case LEFT:
-                g.drawImage(ResourceMgr.bulletL, x, y, null);
-                break;
-            case RIGHT:
-                g.drawImage(ResourceMgr.bulletR, x, y, null);
-                break;
-            case UP:
-                g.drawImage(ResourceMgr.bulletU, x, y, null);
-                break;
-            case DOWN:
-                g.drawImage(ResourceMgr.bulletD, x, y, null);
-                break;
-        }
+        Color color = g.getColor();
+        g.setColor(Color.YELLOW);
+        g.fillRect(x,y,20,20);
+        g.setColor(color);
 
         moving();
     }
@@ -101,7 +89,7 @@ public class Bullet extends BaseBullet {
             this.die();
             tank.die();
 
-            int eX = tank.getX() + Tank.WIDTH / 2 - BaoZha.WIDTH /2;
+            int eX = tank.getX() + Tank.WIDTH / 2 - BaoZha.WIDTH / 2;
             int eY = tank.getY() + Tank.HEIGHT / 2 - BaoZha.HEIGHT / 2;
             tf.baoZhas.add(tf.gf.createBaozha(eX, eY, tf));
         }

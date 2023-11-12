@@ -10,10 +10,11 @@ public class FourDirFireStrategy implements FireStrategy{
 
         Dir[] dirs = Dir.values();
         for( int i =0; i<dirs.length; i++){
-            new Bullet(bX, bY, dirs[i], t.group, t.tf);
+            //new Bullet(bX, bY, dirs[i], t.group, t.tf);
+            t.tf.gf.createBullet(bX,bY,dirs[i],Group.Good,t.tf);
         }
 
-        if(t.group == Group.Good) new Thread(()->new Audio("audio/tank_fire.wav").play()).start();
+        //if(t.group == Group.Good) new Thread(()->new Audio("audio/tank_fire.wav").play()).start();
 
     }
 }

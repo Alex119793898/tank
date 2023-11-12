@@ -1,14 +1,15 @@
 package com.caoliang.tank;
 
+import com.caoliang.abstractfactory.BaseBaoZha;
 import com.mashibing.tank.Audio;
 
 import java.awt.*;
 
-public class BaoZha {
+public class BaoZha extends BaseBaoZha {
 
-    static int WIDTH = ResourceMgr.baoZha[0].getWidth();
+    public static int WIDTH = ResourceMgr.baoZha[0].getWidth();
 
-    static int HEIGHT = ResourceMgr.baoZha[0].getHeight();
+    public static int HEIGHT = ResourceMgr.baoZha[0].getHeight();
 
 
     private int x, y;
@@ -23,9 +24,10 @@ public class BaoZha {
         this.y = y;
         this.tf = tf;
 
-        new Thread(()->new Audio("audio/explode.wav").play()).start();
+        //new Thread(()->new Audio("audio/explode.wav").play()).start();
     }
 
+    @Override
     public void paint(Graphics g){
         g.drawImage(ResourceMgr.baoZha[step++],x,y,null);
 

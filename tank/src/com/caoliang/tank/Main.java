@@ -8,7 +8,7 @@ public class Main {
         Integer initTankCount = Integer.parseInt((String) PropertyMgr.get("initTankCount"));
         //初始化地方坦克
         for(int i =0; i<initTankCount; i++){
-            tankFrame.tanks.add(new Tank(50 + 80 * i, 100, Dir.DOWN, Group.Bad, tankFrame));
+            tankFrame.tanks.add(tankFrame.gf.createTank(50 + 80 * i, 100, Dir.DOWN, Group.Bad, tankFrame));
         }
 
         //游戏音乐

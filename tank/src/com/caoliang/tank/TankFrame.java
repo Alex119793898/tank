@@ -1,5 +1,6 @@
 package com.caoliang.tank;
 
+import com.caoliang.abstractfactory.*;
 import com.mashibing.tank.Audio;
 
 import java.awt.*;
@@ -15,13 +16,15 @@ public class TankFrame extends Frame{
 
     Tank myTank = new Tank(200,400, Dir.DOWN, Group.Good,this);
 
-    List<Bullet> bullets = new ArrayList<>();
+    public List<BaseBullet> bullets = new ArrayList<>();
 
-    List<Tank> tanks = new ArrayList<>();
+    public List<BaseTank> tanks = new ArrayList<>();
 
-    List<BaoZha> baoZhas = new ArrayList<>();
+    public List<BaseBaoZha> baoZhas = new ArrayList<>();
 
-    static final int GAME_WIDTH = 1280, GAME_HEIGHT = 960 ;
+    public static final int GAME_WIDTH = 1280, GAME_HEIGHT = 960 ;
+
+    public GameFactory gf = new DefaultFactory();
 
     public TankFrame() {
         setSize(GAME_WIDTH, GAME_HEIGHT);
@@ -156,7 +159,7 @@ public class TankFrame extends Frame{
 
             setMainTankDir();
 
-            new Thread(()->new Audio("audio/tank_move.wav").play()).start();
+            //new Thread(()->new Audio("audio/tank_move.wav").play()).start();
         }
 
 
