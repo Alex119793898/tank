@@ -15,13 +15,13 @@ public class BaoZha {
 
     private int step = 0;
 
-    private TankFrame tf = null;
+    private GameModel gm = null;
 
 
-    public BaoZha(int x, int y, TankFrame tf) {
+    public  BaoZha(int x, int y, GameModel gm) {
         this.x = x;
         this.y = y;
-        this.tf = tf;
+        this.gm = gm;
 
         new Thread(()->new Audio("audio/explode.wav").play()).start();
     }
@@ -30,7 +30,7 @@ public class BaoZha {
         g.drawImage(ResourceMgr.baoZha[step++],x,y,null);
 
         if(step >= ResourceMgr.baoZha.length){
-            tf.baoZhas.remove(this);
+            gm.baoZhas.remove(this);
         }
     }
 

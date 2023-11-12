@@ -16,30 +16,30 @@ public class Bullet {
 
     private boolean live = true;
 
-    private TankFrame tf = null;
+    private GameModel gm = null;
 
     private Group group = Group.Bad;
 
     Rectangle rect = new Rectangle();
 
-    public Bullet(int x, int y, Dir dir, Group group, TankFrame tf) {
+    public Bullet(int x, int y, Dir dir, Group group, GameModel gm) {
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.group = group;
-        this.tf = tf;
+        this.gm = gm;
 
         rect.x = x;
         rect.y = y;
         rect.width = WIDTH;
         rect.height = HEIGHT;
 
-        tf.bullets.add(this);
+        gm.bullets.add(this);
     }
 
     public void paint(Graphics g){
         if(!live){
-            tf.bullets.remove(this);
+            gm.bullets.remove(this);
         }
 
         switch (dir){
@@ -99,7 +99,7 @@ public class Bullet {
 
             int eX = tank.getX() + Tank.WIDTH / 2 - BaoZha.WIDTH /2;
             int eY = tank.getY() + Tank.HEIGHT / 2 - BaoZha.HEIGHT / 2;
-            tf.baoZhas.add(new BaoZha(eX, eY, tf));
+            gm.baoZhas.add(new BaoZha(eX, eY, gm));
         }
     }
 
